@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>JP Cars</title>
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <span data-js="company-name"></span>
+        <span data-js="company-phone"></span>
+      </h1>
+    </header>
+    <main>
+      <form class="form-register" action="/" data-js="form-register">
+        <input type="url" data-js="image" placeholder="Image URL">
+        <input type="text" data-js="brand-model" placeholder="Marca / Modelo">
+        <input type="text" data-js="year" placeholder="Ano">
+        <input type="text" data-js="plate" placeholder="Placa">
+        <input type="text" data-js="color" placeholder="Cor">
+        <button type="submit" data-js="btnRegister" class="form-register__button" disabled>Cadastrar</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Marca / Modelo</th>
+            <th>Ano</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th>Remover</th>
+          </tr>
+        </thead>
+        <tbody data-js="table-car">
+          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>a</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
+          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>b</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
+          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>c</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>
