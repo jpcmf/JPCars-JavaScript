@@ -1,4 +1,4 @@
-<p align="center"><img src="jpcars.png" alt="JPCars" width="200"></p>
+<p align="center"><img src="src/images/jpcars.png" alt="JPCars" width="200"></p>
 
 # JPCars-JavaScript
 
