@@ -29,23 +29,32 @@ body {
   background: var(--main-bg-color);
   font-family: 'Roboto', sans-serif;
   padding-bottom: 30px;
+  margin: 0;
 }
 
 .wrapper {
   max-width: 1024px;
   margin: 0 auto;
+
+  // display: grid;
+  // grid-gap: 15px;
+  // grid-template-areas:
+  //   "header"
+  //   "main"
 }
 
 header {
+  background-color: var(--header-bg-color);
   border-bottom: solid 1px var(--header-bg-color);
-  grid-area: header;
+  // grid-area: header;
 }
 
 header h1 {
   display: flex;
   align-items: center;
   justify-content:space-between;
-  padding: 0 20px;
+  padding: 20px;
+  margin: 0;
 }
 
 h1 span:last-child {
@@ -53,15 +62,7 @@ h1 span:last-child {
 }
 
 main {
-  grid-area: main;
-}
-
-.wrapper {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-areas:
-    "header"
-    "main"
+  // grid-area: main;
 }
 
 .form-register {
