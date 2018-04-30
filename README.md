@@ -39,8 +39,9 @@ npm run watch
 
 ## Install dependencies
 
-### Go to server folder
+### Go to server folder and install
 ```
+cd server
 npm install
 ```
 ### Install nodemon
@@ -50,8 +51,9 @@ npm install -g nodemon
 
 # Run server
 
-### Go to server folder
+### Go to server folder and run
 ```
+cd server
 nodemon app.js
 ```
 
