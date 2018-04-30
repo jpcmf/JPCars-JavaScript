@@ -10,16 +10,17 @@
   <![endif]-->
 </head>
 <body>
+  <header>
+    <h1>
+      <span data-js="company-name"></span>
+      <span data-js="company-phone"></span>
+    </h1>
+  </header>
   <div class="wrapper">
-    <header>
-      <h1>
-        <span data-js="company-name"></span>
-        <span data-js="company-phone"></span>
-      </h1>
-    </header>
     <main>
-      <form class="form-register" action="/" data-js="form-register">
-        <input type="url" data-js="image" placeholder="Image URL">
+      <h2>Cadastro</h2>
+      <form class="form-register" action="http://localhost:3000/car" method="post" data-js="form-register">
+        <input type="url" data-js="image" placeholder="Image URL" value="https://www.cstatic-images.com/car-pictures/xl/USC60BMC111A021001.jpg">
         <input type="text" data-js="brand-model" placeholder="Marca / Modelo">
         <input type="text" data-js="year" placeholder="Ano">
         <input type="text" data-js="plate" placeholder="Placa">
@@ -37,11 +38,7 @@
             <th>Remover</th>
           </tr>
         </thead>
-        <tbody data-js="table-car">
-          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>a</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
-          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>b</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
-          <!-- <tr data-js="car-add"><td><img src="" class="image"></td><td>c</td><td></td><td></td><td></td><td><a class="btn-remove" href="#">Remove</a></td></tr> -->
-        </tbody>
+        <tbody data-js="table-car"></tbody>
       </table>
     </main>
   </div>

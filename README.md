@@ -35,6 +35,26 @@ npm run server
 npm run watch
 ```
 
+# Install server
+
+## Install dependencies
+
+### Go to server folder
+```
+npm install
+```
+### Install nodemon
+```
+npm install -g nodemon
+```
+
+# Run server
+
+### Go to server folder
+```
+nodemon app.js
+```
+
 # Todos
   - Write MORE Tests
   - Style remove button
