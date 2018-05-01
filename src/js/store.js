@@ -14,7 +14,7 @@
 
       initEvents: function initEvents() {
         $('[data-js="form-register"]').on('submit', this.handleSubmit, false);
-        // const picker = datepicker(document.querySelector('[data-js="year"]'), {dateSelected: new Date(2099, 0, 5)});
+        const picker = datepicker(document.querySelector('[data-js="year"]'), {dateSelected: new Date(2099, 0, 5)});
       },
 
       handleSubmit: function handleSubmit(e) {
