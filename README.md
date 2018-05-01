@@ -59,10 +59,11 @@ nodemon app.js
 
 # Todos
   - Write MORE Tests
-  - Style remove button
   - Improvement UI
   - Improvement UX
-  - Upload image project GitHub
+  - ~~Style remove button~~
+  - ~~Upload image project GitHub~~
+  - ~~Active register button after all fields is filled~~
 
 # License
 
