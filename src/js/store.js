@@ -14,7 +14,7 @@
 
       initEvents: function initEvents() {
         $('[data-js="form-register"]').on('submit', this.handleSubmit, false);
-        const picker = datepicker(document.querySelector('[data-js="year"]'), {dateSelected: new Date(2099, 0, 5)});
+        // const picker = datepicker(document.querySelector('[data-js="year"]'), {dateSelected: new Date(2099, 0, 5)});
       },
 
       handleSubmit: function handleSubmit(e) {
@@ -100,9 +100,9 @@
         $tdColor.textContent = $('[data-js="color"]').get().value;
 
         $btnRemove.setAttribute('data-js', 'remove');
-        $btnRemove.setAttribute('class', 'btn-remove');
+        $btnRemove.setAttribute('class', 'form-register__remove');
         $btnRemove.setAttribute('href', '#');
-        $btnRemove.innerHTML = 'Remove';
+        $btnRemove.innerHTML = 'excluir';
         $tdRemove.appendChild($btnRemove);
 
         $tr.setAttribute('data-js', 'car-add');
@@ -173,9 +173,9 @@
             $tdPlate.textContent = data.plate;
             $tdColor.textContent = data.color;
             $btnRemove.setAttribute('data-js', 'remove');
-            $btnRemove.setAttribute('class', 'btn-remove');
+            $btnRemove.setAttribute('class', 'form-register__remove');
             $btnRemove.setAttribute('href', '#');
-            $btnRemove.innerHTML = 'Remove';
+            $btnRemove.innerHTML = 'excluir';
             $tdRemove.appendChild($btnRemove);
 
             $tr.setAttribute('data-js', 'car-add');

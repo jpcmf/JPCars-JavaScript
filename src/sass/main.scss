@@ -23,6 +23,7 @@
   --input-text-color: #333;
   --button-register-bg-color: #3572DB;
   --button-disabled-bg-color: #cccccc;
+  --button-remove-bg-color: #fd5067;
   /* --button-equal-bg-color: #28D060; */
 }
 
@@ -102,6 +103,19 @@ main {
   }
 }
 
+.form-register__remove {
+  background: var(--button-remove-bg-color);
+  border-radius: 0px;
+  border: 0;
+  color: var(--button-text-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px;
+  text-decoration: none;
+}
+
 table {
   border-collapse: collapse;
   border: 0;
@@ -112,8 +126,13 @@ table {
 table thead th,
 table tbody td {
   border: solid 1px var(--main-border-color);
+  padding: 5px;
 }
 
 table tbody td .image {
   max-width: 200px;
+}
+
+table tbody td:last-child {
+  text-align: center;
 }
