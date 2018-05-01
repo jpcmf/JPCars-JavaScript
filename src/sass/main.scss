@@ -127,12 +127,9 @@ table thead th,
 table tbody td {
   border: solid 1px var(--main-border-color);
   padding: 5px;
+  text-align: center;
 }
 
 table tbody td .image {
   max-width: 200px;
-}
-
-table tbody td:last-child {
-  text-align: center;
 }
