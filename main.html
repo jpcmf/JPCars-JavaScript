@@ -20,12 +20,12 @@
     <main>
       <h2>Cadastro</h2>
       <p>Image link for test:<br>https://www.cstatic-images.com/car-pictures/xl/USC60BMC111A021001.jpg</p>
-      <form class="form-register" action="http://localhost:3000/car" method="post" data-js="form-register">
-        <input type="url" data-js="image" placeholder="Image URL" value="">
-        <input type="text" data-js="brand-model" placeholder="Marca / Modelo">
-        <input type="text" data-js="year" placeholder="Ano">
-        <input type="text" data-js="plate" placeholder="Placa">
-        <input type="text" data-js="color" placeholder="Cor">
+      <form method="post" action="http://localhost:3000/car" data-js="form-register" class="form-register" >
+        <input type="url" name="image" data-js="image" placeholder="Image URL">
+        <input type="text" name="brand-model" data-js="brand-model" placeholder="Marca / Modelo">
+        <input type="text" name="year" data-js="year" data-js="year" placeholder="Ano">
+        <input type="text" name="plate" data-js="plate" placeholder="Placa">
+        <input type="text" name="color" data-js="color" placeholder="Cor">
         <button type="submit" data-js="btnRegister" class="form-register__button" disabled>Cadastrar</button>
       </form>
       <table>

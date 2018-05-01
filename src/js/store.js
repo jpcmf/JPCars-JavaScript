@@ -14,22 +14,26 @@
 
       initEvents: function initEvents() {
         $('[data-js="form-register"]').on('submit', this.handleSubmit, false);
+        // const picker = datepicker(document.querySelector('[data-js="year"]'), {dateSelected: new Date(2099, 0, 5)});
       },
 
       handleSubmit: function handleSubmit(e) {
-        e.preventDefault();
         console.log('submit');
+
+        e.preventDefault();
 
         var $tableCar = $('[data-js="table-car"]').get();
         $tableCar.appendChild(app.createNewCar());
 
+        app.carsPostInfo();
         app.handleRemove();
 
         $('[data-js="form-register"]').get().reset();
+        $('[data-js="btnRegister"]').get().disabled = true;
 
       },
 
-      handleRemove: function handleRemove(e) {
+      handleRemove: function handleRemove() {
         // var url = 'http://localhost:3000/car';
         // var xhr = new XMLHttpRequest();
         // xhr.open('DELETE', url);
@@ -39,25 +43,34 @@
         // }
         // xhr.send(null);
 
+        var $tableCar = document.querySelector('[data-js="table-car"]');
+        var $tdAdd = document.querySelectorAll('table > tbody > tr > td:last-child');
         var $btnRemove = document.querySelector('[data-js="remove"]');
-        var $trAdd = document.querySelectorAll('[data-js="car-add"]');
 
-        $trAdd.forEach(function($btnRemove) {
+        $tdAdd.forEach(function($btnRemove) {
           $btnRemove.addEventListener('click',function(e) {
             e.preventDefault();
             e.target.parentNode.parentNode.remove();
+            console.log(e.target);
           }, false);
         });
       },
 
       validateForm: function validateForm() {
-        var $btnRegister = document.querySelector('[data-js="btnRegister"]');
-        var $inputImage = document.querySelector('[data-js="image"]');
+        var $form = document.querySelectorAll('[data-js="form-register"]');
         var $inputs = document.querySelectorAll('input');
+        var $inputImage = document.querySelector('[data-js="image"]');
+        var $inputYear = document.querySelector('[data-js="year"]');
+        var $btnRegister = document.querySelector('[data-js="btnRegister"]');
 
-        $inputs.forEach(function(inputField) {
-          inputField.addEventListener('input', function(e) {
-            inputField = e.target.value.length == 0 ? $btnRegister.disabled = true : $btnRegister.disabled = false;
+        $form.forEach(function($inputs) {
+          $inputs.addEventListener('input', function(e) {
+            if(!$inputs[0].value == '' && !$inputs[1].value == '' && !$inputs[2].value == '' && !$inputs[3].value == '' && !$inputs[4].value == '') {
+              // $inputs = e.target.value.length == 0 ? $btnRegister.disabled = true : $btnRegister.disabled = false;
+              $btnRegister.disabled = false;
+            } else {
+              $btnRegister.disabled = true;
+            }
           }, false);
         });
 
@@ -66,22 +79,7 @@
         // }
       },
 
-      // createHTMLElements: function createHTMLElements() {
-      //   var $fragment = document.createDocumentFragment();
-      //   var $tr = document.createElement('tr');
-      //   var $tdImage = document.createElement('td');
-      //   var $image = document.createElement('img');
-      //   var $tdBrand = document.createElement('td');
-      //   var $tdYear = document.createElement('td');
-      //   var $tdPlate = document.createElement('td');
-      //   var $tdColor = document.createElement('td');
-      //   var $tdRemove = document.createElement('td');
-      //   var $btnRemove = document.createElement('a');
-      // },
-
       createNewCar: function createNewCar() {
-
-        // app.createHTMLElements();
 
         var $fragment = document.createDocumentFragment();
         var $tr = document.createElement('tr');
@@ -96,11 +94,11 @@
 
         $image.src = $('[data-js="image"]').get().value;
         $tdImage.appendChild($image).classList.add('image');
-        // $tdImage.textContent = $('[data-js="image"]').get().value;
         $tdBrand.textContent = $('[data-js="brand-model"]').get().value;
         $tdYear.textContent = $('[data-js="year"]').get().value;
         $tdPlate.textContent = $('[data-js="plate"]').get().value;
         $tdColor.textContent = $('[data-js="color"]').get().value;
+
         $btnRemove.setAttribute('data-js', 'remove');
         $btnRemove.setAttribute('class', 'btn-remove');
         $btnRemove.setAttribute('href', '#');
@@ -114,8 +112,6 @@
         $tr.appendChild($tdPlate);
         $tr.appendChild($tdColor);
         $tr.appendChild($tdRemove);
-
-        app.carsPostInfo();
 
         return $fragment.appendChild($tr);
       },
@@ -192,9 +188,9 @@
 
             var $tableCar = $('[data-js="table-car"]').get();
             $tableCar.appendChild($fragment.appendChild($tr));
-
-            app.handleRemove();
           });
+
+          app.handleRemove();
         }
       },
 

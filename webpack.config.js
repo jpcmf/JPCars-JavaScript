@@ -48,7 +48,7 @@ if(process.env.NODE_ENV == 'production') {
 module.exports = {
   entry: {
     app: './src/js/app.js',
-    vendor: ['jquery', 'bootstrap']
+    vendor: ['jquery', 'bootstrap', 'js-datepicker']
   },
   output: {
     filename: 'bundle.js',
