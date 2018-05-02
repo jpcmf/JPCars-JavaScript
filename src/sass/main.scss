@@ -21,9 +21,13 @@
   --button-text-color: #EEE;
   --input-bg-color: #eee;
   --input-text-color: #333;
-  --button-register-bg-color: #3572DB;
+  --button-register-bg-color: #2969d8;
+  --button-register-bg-hover-color: #3572DB;
   --button-disabled-bg-color: #cccccc;
-  --button-remove-bg-color: #fd5067;
+  --button-remove-bg-color: #fb2844;
+  --button-remove-bg-hover-color: #fd5067;
+  --table-bg-color: #fff;
+  --table-border-color: #F6F6F6;
   /* --button-equal-bg-color: #28D060; */
 }
 
@@ -89,23 +93,27 @@ main {
 }
 
 .form-register__button {
-  background: var(--button-register-bg-color);
+  background-color: var(--button-register-bg-color);
   border-radius: 0px;
   border: 0;
-
   color: var(--button-text-color);
   cursor: pointer;
   font-size: 22px;
   font-weight: 300;
   padding: 20px;
+  transition: background-color 0.8s ease;
 
   &:disabled {
     background-color: var(--button-disabled-bg-color);
   }
+
+  &:hover {
+    background-color: var(--button-register-bg-hover-color);
+  }
 }
 
 .form-register__remove {
-  background: var(--button-remove-bg-color);
+  background-color: var(--button-remove-bg-color);
   border-radius: 0px;
   border: 0;
   color: var(--button-text-color);
@@ -115,6 +123,11 @@ main {
   font-weight: 300;
   padding: 10px;
   text-decoration: none;
+  transition: background-color 0.8s ease;
+
+  &:hover {
+    background-color: var(--button-remove-bg-hover-color);;
+  }
 }
 
 table {
@@ -126,7 +139,8 @@ table {
 
 table thead th,
 table tbody td {
-  border: solid 1px var(--main-border-color);
+  background-color: var(--table-bg-color);
+  border: solid 1px var(--table-border-color);
   padding: 5px;
   text-align: center;
 }
