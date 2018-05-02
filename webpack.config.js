@@ -21,14 +21,15 @@ plugins.push(new htmlWebpackPlugin({
 plugins.push(new extractTextPlugin('style.css'));
 
 plugins.push(new webpack.ProvidePlugin({
-  '$': 'jquery/dist/jquery.js',
-  'jQuery': 'jquery/dist/jquery.js'
+  // '$': 'jquery/dist/jquery.js',
+  // 'jQuery': 'jquery/dist/jquery.js',
+  'datepicker': 'js-datepicker/datepicker.min.js'
 }));
-
-plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: 'vendor',
-  filename: 'vendor.bundle.js'
-}));
+//
+// plugins.push(new webpack.optimize.CommonsChunkPlugin({
+//   name: 'vendor',
+//   filename: 'vendor.bundle.js'
+// }));
 
 if(process.env.NODE_ENV == 'production') {
   plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
@@ -48,7 +49,7 @@ if(process.env.NODE_ENV == 'production') {
 module.exports = {
   entry: {
     app: './src/js/app.js',
-    vendor: ['jquery', 'bootstrap', 'js-datepicker']
+    // vendor: ['jquery', 'bootstrap']
   },
   output: {
     filename: 'bundle.js',
