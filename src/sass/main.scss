@@ -65,11 +65,12 @@ h1 span:last-child {
 
 main {
   // grid-area: main;
+  padding: 0 20px;
 }
 
 .form-register {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
 }
 

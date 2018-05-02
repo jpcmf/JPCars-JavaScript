@@ -5,7 +5,7 @@
 
     return {
       init: function init() {
-        console.log('app init');
+        // console.log('app init');
         this.companyInfo();
         this.initEvents();
         this.validateForm();
@@ -30,7 +30,6 @@
 
         $('[data-js="form-register"]').get().reset();
         $('[data-js="btnRegister"]').get().disabled = true;
-
       },
 
       handleRemove: function handleRemove() {
@@ -117,7 +116,8 @@
       },
 
       companyInfo: function companyInfo() {
-        console.log('company info');
+        // console.log('company info');
+
         var ajax = new XMLHttpRequest();
         ajax.open('GET', '/company.json', true);
         ajax.send();
@@ -140,21 +140,22 @@
       },
 
       carsGetInfo: function carsGetInfo() {
-        console.log('cars get info');
+        // console.log('cars get info');
 
         var ajax = new XMLHttpRequest();
         ajax.open('GET', 'http://localhost:3000/car');
         ajax.send();
-
         ajax.addEventListener('readystatechange', this.getCarsInfo, false);
       },
 
       getCarsInfo: function getCarsInfo() {
         if(this.readyState === 4) {
           var data = JSON.parse(this.responseText);
-          console.log(data, this.status);
+          // console.log(data, this.status);
 
-          data.forEach(function() {
+          for(var i = 0; i < data.length; i++) {
+            console.log(data[i]);
+
             var $fragment = document.createDocumentFragment();
             var $tr = document.createElement('tr');
             var $tdImage = document.createElement('td');
@@ -166,12 +167,13 @@
             var $tdRemove = document.createElement('td');
             var $btnRemove = document.createElement('a');
 
-            $image.src = data.image;
+            $image.src = data[i].image;
             $tdImage.appendChild($image).classList.add('image');
-            $tdBrand.textContent = data.brandModel;
-            $tdYear.textContent = data.year;
-            $tdPlate.textContent = data.plate;
-            $tdColor.textContent = data.color;
+            $tdBrand.textContent = data[i].brandModel;
+            $tdYear.textContent = data[i].year;
+            $tdPlate.textContent = data[i].plate;
+            $tdColor.textContent = data[i].color;
+
             $btnRemove.setAttribute('data-js', 'remove');
             $btnRemove.setAttribute('class', 'form-register__remove');
             $btnRemove.setAttribute('href', '#');
@@ -188,20 +190,70 @@
 
             var $tableCar = $('[data-js="table-car"]').get();
             $tableCar.appendChild($fragment.appendChild($tr));
-          });
+          }
+
+          // data.forEach(function(i) {
+          //   var $fragment = document.createDocumentFragment();
+          //   var $tr = document.createElement('tr');
+          //   var $tdImage = document.createElement('td');
+          //   var $image = document.createElement('img');
+          //   var $tdBrand = document.createElement('td');
+          //   var $tdYear = document.createElement('td');
+          //   var $tdPlate = document.createElement('td');
+          //   var $tdColor = document.createElement('td');
+          //   var $tdRemove = document.createElement('td');
+          //   var $btnRemove = document.createElement('a');
+          //
+          //   $image.src = data.image;
+          //   $tdImage.appendChild($image).classList.add('image');
+          //   $tdBrand.textContent = data.brandModel;
+          //   $tdYear.textContent = data.year;
+          //   $tdPlate.textContent = data.plate;
+          //   $tdColor.textContent = data.color;
+          //
+          //   $btnRemove.setAttribute('data-js', 'remove');
+          //   $btnRemove.setAttribute('class', 'form-register__remove');
+          //   $btnRemove.setAttribute('href', '#');
+          //   $btnRemove.innerHTML = 'excluir';
+          //   $tdRemove.appendChild($btnRemove);
+          //
+          //   $tr.setAttribute('data-js', 'car-add');
+          //   $tr.appendChild($tdImage);
+          //   $tr.appendChild($tdBrand);
+          //   $tr.appendChild($tdYear);
+          //   $tr.appendChild($tdPlate);
+          //   $tr.appendChild($tdColor);
+          //   $tr.appendChild($tdRemove);
+          //
+          //   // return $fragment.appendChild($tr);
+          //
+          //   var $tableCar = $('[data-js="table-car"]').get();
+          //
+          //   $tableCar.appendChild($fragment.appendChild($tr));
+          // });
 
           app.handleRemove();
         }
       },
 
-      carsPostInfo: function carsPostInfo($tdImage, $tdBrand, $tdYear, $tdPlate, $tdColor) {
-        console.log('cars post info');
+      carsPostInfo: function carsPostInfo() {
+        // console.log('cars post info');
+
+        const params = {
+          image: document.querySelector('[data-js="image"]').value,
+          brandModel: document.querySelector('[data-js="brand-model"]').value,
+          year: document.querySelector('[data-js="year"]').value,
+          plate: document.querySelector('[data-js="plate"]').value,
+          color: document.querySelector('[data-js="color"]').value
+        }
+
+        console.log(params.image);
 
         var ajax = new XMLHttpRequest();
         ajax.open('POST', 'http://localhost:3000/car');
         ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        // ajax.send('image=http://www.google.com&brandModel=AudiA3&year=2018&place=XXX-0000&color=branco');
-        ajax.send('image=' + $tdImage + '&brandModel=' + $tdBrand + '&year=' + $tdYear + '&plate=' + $tdPlate + '&color=' + $tdColor);
+        // ajax.send('image=http://www.google.com&brandModel=AudiA5&year=2018&plate=XXX-0000&color=branco');
+        ajax.send('image=' + params.image + '&brandModel=' + params.brandModel + '&year=' + params.year + '&plate=' + params.plate + '&color=' + params.color);
 
         ajax.addEventListener('readystatechange', this.postCarsInfo, false);
       },
