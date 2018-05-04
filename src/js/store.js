@@ -64,7 +64,7 @@
 
         $form.forEach(function($inputs) {
           $inputs.addEventListener('input', function(e) {
-            if(!$inputs[0].value == '' && !$inputs[1].value == '' && !$inputs[2].value == '' && !$inputs[3].value == '' && !$inputs[4].value == '') {
+            if (!$inputs[0].value == '' && !$inputs[1].value == '' && !$inputs[2].value == '' && !$inputs[3].value == '' && !$inputs[4].value == '') {
               // $inputs = e.target.value.length == 0 ? $btnRegister.disabled = true : $btnRegister.disabled = false;
               $btnRegister.disabled = false;
             } else {
@@ -72,6 +72,11 @@
             }
           }, false);
         });
+
+        $inputYear.addEventListener('keyup', function(e) {
+          // this.value = this.value.toString().replace(/[^\d]/g,'');
+          e.target.value = e.target.value.toString().replace(/[^\d]/g,'');
+        }, false);
 
         // $inputImage.oninvalid = function(e) {
         //   e.target.setCustomValidity('URL should only contain images. e.g http://www.exemple.com/image.jpg|png|gif')
