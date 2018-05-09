@@ -33,26 +33,46 @@
       },
 
       handleRemove: function handleRemove() {
-        // var url = 'http://localhost:3000/car';
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('DELETE', url);
+
+        var url = 'http://localhost:3000/car';
+        var xhr = new XMLHttpRequest();
+
+        xhr.addEventListener('readystatechange', function() {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        }, false);
+
+        xhr.open('DELETE', url);
+        xhr.send(url);
+
+        // var cars = JSON.parse(xhr.responseText);
+        // console.log(cars);
         // xhr.onload = function() {
         //   var cars = xhr.responseText;
         //   console.log(cars);
         // }
-        // xhr.send(null);
 
         var $tableCar = document.querySelector('[data-js="table-car"]');
+        var $trAdd = document.querySelectorAll('[data-js="car-add"]');
         var $tdAdd = document.querySelectorAll('table > tbody > tr > td:last-child');
         var $btnRemove = document.querySelector('[data-js="remove"]');
 
-        $tdAdd.forEach(function($btnRemove) {
-          $btnRemove.addEventListener('click',function(e) {
+        $tdAdd.forEach(function(item) {
+          item.addEventListener('click',function(e) {
             e.preventDefault();
-            e.target.parentNode.parentNode.remove();
-            console.log(e.target);
+            var tr = this.parentNode;
+            tr.parentNode.removeChild(tr);
           }, false);
         });
+
+        // for (var i = 0; i < $tableCar.rows.length; i++) {
+        //   console.log($tableCar.rows[i]);
+        //   $tableCar.rows[i].cells[5].addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     $tableCar.deleteRow(0);
+        //   }, false);
+        // }
       },
 
       validateForm: function validateForm() {
@@ -75,7 +95,7 @@
 
         $inputYear.addEventListener('keyup', function(e) {
           // this.value = this.value.toString().replace(/[^\d]/g,'');
-          e.target.value = e.target.value.toString().replace(/[^\d]/g,'');
+          e.target.value = e.target.value.toString().replace(/[^\d]{4}/g,'');
         }, false);
 
         // $inputImage.oninvalid = function(e) {
