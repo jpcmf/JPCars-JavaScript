@@ -36,6 +36,7 @@
 
         this.validateForm();
         this.carsDelInfo();
+
       },
 
       initEvents: function initEvents() {
@@ -226,21 +227,21 @@
       },
 
       carsDelInfo: function carsDelInfo() {
-        var savedCars = [];
-        var $newTr = document.querySelectorAll('[data-js="car-add"]');
+        // var savedCars = [];
+        // var $newTr = document.querySelector('[data-js="car-add"]');
         // console.log($newTr);
 
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', API_CARS);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send(null);
+        xhr.send('/plate=');
         xhr.addEventListener('readystatechange', this.delCarsInfo, false);
       },
 
       delCarsInfo: function delCarsInfo() {
         if (this.readyState === 4) {
           var data = JSON.parse(this.responseText);
-          // console.log('data: ' + data);
+          console.log('data: ' + data)
         }
       }
     };
