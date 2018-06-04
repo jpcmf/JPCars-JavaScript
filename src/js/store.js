@@ -15,18 +15,18 @@
     var $companyName = $('[data-js="company-name"]');
     var $companyPhone = $('[data-js="company-phone"]');
 
-    console.log(
-      $carImage,
-      $carBrand,
-      $carYear,
-      $carPlate,
-      $carColor,
-      $tableCarList,
-      $formRegister,
-      $btnRegister,
-      $companyName,
-      $companyPhone
-    );
+    // console.log(
+    //   $carImage,
+    //   $carBrand,
+    //   $carYear,
+    //   $carPlate,
+    //   $carColor,
+    //   $tableCarList,
+    //   $formRegister,
+    //   $btnRegister,
+    //   $companyName,
+    //   $companyPhone
+    // );
 
     return {
       init: function init() {
@@ -61,9 +61,9 @@
         $tdAdd.forEach(function(item) {
           item.addEventListener('click',function(e) {
             e.preventDefault();
-            // var newTr = this.parentNode.parentNode;
-            // newTr.remove();
             app.carsDelInfo();
+            var newTr = this.parentNode.parentNode;
+            newTr.remove();
           }, false);
         });
       },
@@ -233,19 +233,18 @@
 
       carsDelInfo: function carsDelInfo() {
         var $removePlate = document.querySelector('[data-plate]');
-        console.log($removePlate);
 
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', API_CARS);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('/plate=' + $removePlate);
+        xhr.send('&plate=' + $removePlate.dataset.plate);
         xhr.addEventListener('readystatechange', this.delCarsInfo, false);
       },
 
       delCarsInfo: function delCarsInfo() {
         if (this.readyState === 4) {
           var data = this.responseText;
-          console.log('data: ' + data)
+          console.log(data, this.status);
         }
       }
     };
