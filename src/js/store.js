@@ -35,7 +35,7 @@
         this.carsGetInfo();
 
         this.validateForm();
-        this.carsDelInfo();
+        // this.carsDelInfo();
 
       },
 
@@ -61,8 +61,9 @@
         $tdAdd.forEach(function(item) {
           item.addEventListener('click',function(e) {
             e.preventDefault();
-            var newTr = this.parentNode.parentNode;
-            newTr.remove();
+            // var newTr = this.parentNode.parentNode;
+            // newTr.remove();
+            app.carsDelInfo();
           }, false);
         });
       },
@@ -106,6 +107,8 @@
         $tdYear.textContent = $('[data-js="year"]').get().value;
         $tdPlate.textContent = $('[data-js="plate"]').get().value;
         $tdColor.textContent = $('[data-js="color"]').get().value;
+
+        $tdPlate.setAttribute('data-plate', $('[data-js="plate"]').get().value);
 
         $btnRemove.setAttribute('data-js', 'remove');
         $btnRemove.setAttribute('class', 'form-register__remove');
@@ -180,6 +183,8 @@
             $tdPlate.textContent = data[i].plate;
             $tdColor.textContent = data[i].color;
 
+            $tdPlate.setAttribute('data-plate', data[i].plate);
+
             $btnRemove.setAttribute('data-js', 'remove');
             $btnRemove.setAttribute('class', 'form-register__remove');
             $btnRemove.setAttribute('href', '#');
@@ -227,20 +232,19 @@
       },
 
       carsDelInfo: function carsDelInfo() {
-        // var savedCars = [];
-        // var $newTr = document.querySelector('[data-js="car-add"]');
-        // console.log($newTr);
+        var $removePlate = document.querySelector('[data-plate]');
+        console.log($removePlate);
 
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', API_CARS);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('/plate=');
+        xhr.send('/plate=' + $removePlate);
         xhr.addEventListener('readystatechange', this.delCarsInfo, false);
       },
 
       delCarsInfo: function delCarsInfo() {
         if (this.readyState === 4) {
-          var data = JSON.parse(this.responseText);
+          var data = this.responseText;
           console.log('data: ' + data)
         }
       }
